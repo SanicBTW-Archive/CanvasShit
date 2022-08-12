@@ -1,0 +1,26 @@
+.notificationsPanel
+{
+    height: 12% fit-content; 
+    width: fit-content; 
+    position: fixed; 
+    z-index: 3;
+    top: -200px;
+    background-color: rgb(32, 32, 32); 
+    overflow-x: hidden; 
+    transition: 0.25s ease-in-out;
+    color: white;
+}
+
+.notransition 
+{
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+body
+{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+}

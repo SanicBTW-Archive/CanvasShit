@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--totally not taken from a html generated file from haxe-->
+        <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <script>
+            window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, { capture: false, passive: false });
+            if (typeof window.devicePixelRatio != 'undefined' && window.devicePixelRatio > 2) {
+                var meta = document.getElementById ("viewport");
+                meta.setAttribute ('content', 'width=device-width, initial-scale=' + (2 / window.devicePixelRatio) + ', user-scalable=no');
+            }
+
+            const detectDeviceType = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+            ? 'Mobile'
+            : 'Desktop';
+
+            var outerStyle = document.createElement("style");
+            if(detectDeviceType() == "Desktop")
+            {
+                outerStyle.innerHTML = `.outer { 
+                    width: 100%; height: 97.9vh; display: flex; justify-content: center; align-items: center;
+                }`;
+            }
+            else
+            {
+                outerStyle.innerHTML = `.outer { 
+                    width: 100%; height: 90vh; display: flex; justify-content: center; align-items: center;
+                }`;
+            }
+            document.head.appendChild(outerStyle);
+
+            function closeNotifPanel()
+            {
+                document.getElementById('notifPanelContent').style.opacity = "0";
+                document.getElementById('notifPanelHeader').style.opacity = "0";
+                document.getElementById('notificationRegion').style.width = "0%";
+            }
+        </script>
+
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>eruda.init();</script>
+
+        <link rel="stylesheet" href="./source/index.css">
+
+        <script src="./source/Notification.js" defer></script>
+
+        <script src="./source/Game.js" defer></script>
+
+        <title>Canvas game testing</title>
+    </head>
+    <body onload="startGame()">
+        <div id="notificationRegion" class="sidePanel">
+            <div id="notifPanelHeader" style="transition: 0.25s opacity; opacity: 0;">
+                <h1 style="margin: 1rem;">Notifications</h1>
+                <p id="closeNotifPanel" onclick="closeNotifPanel()">X</p>
+                <div style="background-color: white; width: 100%; height: 5px;"> </div>
+            </div>
+            <div id="notifPanelContent" style="transition: 0.25s opacity; opacity: 0;">
+            </div>
+        </div>
+
+        <div class="outer">
+            <div id="mainDiv">
+            </div>
+        </div>
+    </body>
+</html>
